@@ -13,6 +13,6 @@ class LSOF::Process
 
   # helpers
   def listeners 
-    @files.reject { |f| f[:state] != "LISTEN" }
+    @files.find_all { |f| f[:state] == "LISTEN" }
   end
 end # class LSOF::Process
