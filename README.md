@@ -1,5 +1,25 @@
 # ruby lsof api
 
+Status:
+
+The API works now, but is less a true API and more a light hash-ish wrapping on
+lsof output.
+
+## Example: 'lsof.rb'
+
+Code: <https://github.com/jordansissel/ruby-lsof/blob/master/examples/lsof.rb>
+
+This example runs 'lsof' like you would normally, but captures the output into
+ruby.
+
+    % sudo ruby lsof.rb -i :80 -s TCP:LISTEN
+    {1846=>{:type=>"IPv4", :send_queue=>"0", :protocol=>"TCP", :state=>"LISTEN", :name=>"*:www", :fd=>7, :read_queue=>"0"}}
+    {1847=>{:type=>"IPv4", :send_queue=>"0", :protocol=>"TCP", :state=>"LISTEN", :name=>"*:www", :fd=>7, :read_queue=>"0"}}
+
+    % ps -fp 1846 -p 1847
+    UID        PID  PPID  C STIME TTY          TIME CMD
+    root      1846     1  0 Mar08 ?        00:00:00 nginx: master process /usr/sbin/nginx
+    www-data  1847  1846  0 Mar08 ?        00:00:01 nginx: worker process
 
 ## Example: What files do I have open?
 

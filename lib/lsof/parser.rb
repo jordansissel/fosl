@@ -152,7 +152,7 @@ class LSOF::Parser
   # Example:
   #   lsof("-i :443")
   def lsof(args="")
-    output = `lsof -F PcfnT0 #{args}`
+    output = `lsof -F PcfntT0 #{args}`
     # Should we raise an exception, or just return empty results, on failure?
     if $?.exitstatus != 0
       raise "lsof exited with status #{$?.exitstatus}"
