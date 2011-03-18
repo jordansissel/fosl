@@ -1,4 +1,4 @@
-# ruby lsof api
+# fosl, a ruby lsof api
 
 Status:
 

@@ -1,7 +1,7 @@
-require "lsof/namespace"
-require "lsof/process"
+require "fosl/namespace"
+require "fosl/process"
 
-class LSOF::Parser
+class FOSL::Parser
   # Fields are separated by newlines or null
   # Fields start with a character followed by the data
   
@@ -100,7 +100,7 @@ class LSOF::Parser
   # state helper, creates a new process
   def new_pid(pid)
     new_file # push the last file (if any) onto the last process
-    @current_process = LSOF::Process.new(pid)
+    @current_process = FOSL::Process.new(pid)
   end
 
   # state helper, creates a new file hash
@@ -112,14 +112,14 @@ class LSOF::Parser
     @current_file = {}
   end
 
-  # Parse output from an LSOF run. You must run
+  # Parse output from an lsof(1) run. You must run
   # This output must be from lsof run with this flag '-F Pcfnt0'
   def parse(data)
     if data[0..0] != "p"
       raise "Expected first character to be 'p'. Unexpected data input - #{data[0..30]}..."
     end
 
-    result = Hash.new { |h,k| h[k] = LSOF::Process.new(k) }
+    result = Hash.new { |h,k| h[k] = FOSL::Process.new(k) }
 
     data.split(/[\n\0]/).each do |field|
       next if field.empty?
@@ -159,4 +159,4 @@ class LSOF::Parser
     end
     return self.parse(output)
   end
-end # class LSOF::Parser
+end # class FOSL::Parser

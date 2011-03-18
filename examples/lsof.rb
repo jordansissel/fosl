@@ -2,7 +2,7 @@
 $: << File.join(File.dirname(__FILE__), "..", "lib")
 
 require "rubygems"
-require "lsof/parser"
+require "fosl/parser"
 
 if ARGV.size == 0
   $stderr.puts "Usage: #{$0} pid [pid ...]"
@@ -10,7 +10,7 @@ if ARGV.size == 0
 end
 
 
-lsof = LSOF::Parser.new
+lsof = FOSL::Parser.new
 results = lsof.lsof(ARGV.join(" "))
 
 results.each do |pid, process|

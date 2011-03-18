@@ -1,8 +1,8 @@
 require "rubygems" 
 require "ap" 
-require "lsof/parser" 
+require "fosl/parser" 
 
-a = LSOF::Parser.new 
+a = FOSL::Parser.new 
 data = a.lsof("-nP")
 
 # Show any process with listening sockets:

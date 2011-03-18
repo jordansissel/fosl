@@ -1,6 +1,6 @@
-require "lsof/namespace"
+require "fosl/namespace"
 
-class LSOF::Process
+class FOSL::Process
   attr_reader :files
   attr_reader :pid
   attr_accessor :command
@@ -15,4 +15,4 @@ class LSOF::Process
   def listeners 
     @files.find_all { |f| f[:state] == "LISTEN" }
   end
-end # class LSOF::Process
+end # class FOSL::Process
