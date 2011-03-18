@@ -3,8 +3,10 @@ require "lsof/namespace"
 class LSOF::Process
   attr_reader :files
   attr_reader :pid
+  attr_accessor :command
 
   def initialize(pid)
+    @command = nil
     @pid = pid
     @files = []
   end

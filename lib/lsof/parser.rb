@@ -64,7 +64,7 @@ class LSOF::Parser
     return { :name => data }
   end
 
-  def parse_f(data)
+  def parse_f(data) # file descriptor (or 'cwd' etc...)
     new_file
 
     # Convert to int it looks like a number.
@@ -75,7 +75,13 @@ class LSOF::Parser
     return { :fd => data }
   end
 
+  def parse_c(data) # command name
+    @current_process.command = data
+    return nil
+  end
+
   def new_pid(pid)
+    new_file # push the last file (if any) onto the last process
     @current_process = LSOF::Process.new(pid)
   end
 
@@ -114,4 +120,8 @@ class LSOF::Parser
 
     return result
   end # def parse
+
+  def lsof(args="")
+    return self.parse(`lsof -F PcfnT0 #{args}`)
+  end
 end # class LSOF::Parser
