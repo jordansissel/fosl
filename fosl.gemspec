@@ -14,6 +14,6 @@ Gem::Specification.new do |spec|
 
   spec.author = "Jordan Sissel"
   spec.email = "jls@semicomplete.com"
-  spec.homepage = "https://github.com/jordansissel/ruby-lsof"
+  spec.homepage = "https://github.com/jordansissel/fosl"
 end
 
