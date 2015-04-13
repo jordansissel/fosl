@@ -4,7 +4,7 @@ require "fosl/process"
 class FOSL::Parser
   # Fields are separated by newlines or null
   # Fields start with a character followed by the data
-  
+
   # These are the fields according to the lsof manpage.
   # If you want to implement one, you should write a 'parse_<field letter>'
   # method. It should return a hash of key => value you want to save.
@@ -69,7 +69,7 @@ class FOSL::Parser
   end
 
   # the pid
-  def parse_p(data) 
+  def parse_p(data)
     new_pid(data.to_i)
     return :new_pid
   end
@@ -80,7 +80,7 @@ class FOSL::Parser
   end
 
   # file descriptor (or 'cwd' etc...)
-  def parse_f(data) 
+  def parse_f(data)
     new_file
 
     # Convert to int it looks like a number.
@@ -94,6 +94,12 @@ class FOSL::Parser
   # The command name
   def parse_c(data)
     @current_process.command = data
+    return nil
+  end
+
+  # The login name
+  def parse_L(data)
+    @current_process.login = data
     return nil
   end
 
@@ -152,7 +158,7 @@ class FOSL::Parser
   # Example:
   #   lsof("-i :443")
   def lsof(args="")
-    output = `lsof -F PcfntT0 #{args}`
+    output = `lsof -F PcfntT0L #{args}`
     # Should we raise an exception, or just return empty results, on failure?
     if $?.exitstatus != 0
       raise "lsof exited with status #{$?.exitstatus}"
