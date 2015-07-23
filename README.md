@@ -1,4 +1,4 @@
-# fosl, a ruby lsof api
+# fosl, a Ruby lsof API
 
 Status:
 
@@ -7,7 +7,7 @@ lsof output.
 
 ## Example: 'lsof.rb'
 
-Code: <https://github.com/jordansissel/ruby-lsof/blob/master/examples/lsof.rb>
+Code: <https://github.com/jordansissel/fosl/blob/master/examples/lsof.rb>
 
 This example runs 'lsof' like you would normally, but captures the output into
 ruby.
@@ -23,7 +23,7 @@ ruby.
 
 ## Example: What files do I have open?
 
-Code: <https://github.com/jordansissel/ruby-lsof/blob/master/examples/lsofpid.rb>
+Code: <https://github.com/jordansissel/fosl/blob/master/examples/lsofpid.rb>
 
 Output:
 
