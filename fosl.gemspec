@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.name = "fosl"
-  spec.version = "0.0.1"
+  spec.version = "0.0.2"
   spec.summary = "fosl - a ruby api for reading lsof(1) output"
   spec.description = ""
   spec.files = files
