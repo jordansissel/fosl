@@ -51,15 +51,15 @@ Output:
 
     require "rubygems" 
     require "ap" 
-    require "lsof/parser" 
+    require "fosl/parser" 
 
-    a = LSOF::Parser.new 
+    a = FOSL::Parser.new 
     data = a.lsof("-nP") # runs "lsof -nP", roughly.
 
     # Show any process with listening sockets:
     data.map do |pid, process|
       next if process.listeners.empty?
-      # 'process' here is an instance of LSOF::Process
+      # 'process' here is an instance of FOSL::Process
 
       ap :pid => pid,
          :command => process.command,
