@@ -51,7 +51,7 @@ Output:
 
     require "rubygems" 
     require "ap" 
-    require "lsof/parser" 
+    require "fosl/parser" 
 
     a = LSOF::Parser.new 
     data = a.lsof("-nP") # runs "lsof -nP", roughly.
